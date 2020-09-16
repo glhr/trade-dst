@@ -1,5 +1,7 @@
+venv/
 save/
 sftp-config.json
 data/
 *.pyc
 
+utils/__pycache__/
