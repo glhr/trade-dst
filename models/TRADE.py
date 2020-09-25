@@ -154,6 +154,8 @@ class TRADE(nn.Module):
         pbar = tqdm(enumerate(dev),total=len(dev))
         n_samples = 0
 
+        dialogues = dict()
+
         for j, data_dev in pbar:
             # Encode and Decode
             batch_size = len(data_dev['context_len'])
@@ -201,19 +203,23 @@ class TRADE(nn.Module):
                         else:
                             predict_belief_bsz_ptr.append(slot_temp[si]+"-"+str(st))
 
-                if verbose:
+                current_turn = data_dev['turn_id'][bi]
+                current_dialogue = data_dev['ID'][bi]
+                max_turns = max(dialogues.get(current_dialogue, 0), current_turn)
+
+                if verbose and current_turn >= max_turns:
                     # print(data_dev.keys())
                     # print(data_dev["ID"][bi], data_dev["turn_id"][bi])
 
-                    print(f"----- DIALOGUE HISTORY (id:{data_dev['ID'][bi]}, turn:{data_dev['turn_id'][bi]})-----")
+                    print(f"----- DIALOGUE HISTORY (id:{current_dialogue}, turn:{current_turn})-----")
                     dialogue_history = '\n\t'.join(data_dev["context_plain"][bi].split(';')).split('\t')
                     dialogue_history = np.insert(dialogue_history, range(1, len(dialogue_history), 2), "->")
 
                     print(*dialogue_history)
 
-                    print("----- CURRENT TURN -----")
-                    print(*data_dev["turn_uttr_plain"][bi].split(';'), sep='\n-->')
-                    print()
+                    # print("----- CURRENT TURN -----")
+                    # print(*data_dev["turn_uttr_plain"][bi].split(';'), sep='\n-->')
+                    # print()
 
                     print("----- PREDICTED DIALOGUE STATE -----")
                     pp.pprint(predict_belief_bsz_ptr)
@@ -224,6 +230,8 @@ class TRADE(nn.Module):
                 if set(data_dev["turn_belief"][bi]) != set(predict_belief_bsz_ptr) and args["genSample"]:
                     print("True", set(data_dev["turn_belief"][bi]) )
                     print("Pred", set(predict_belief_bsz_ptr), "\n")
+
+                dialogues[current_dialogue] = max_turns
 
             if max_samples and n_samples >= max_samples:
                 break

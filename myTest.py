@@ -18,12 +18,12 @@ if args['dataset']=='multiwoz':
 else:
     print("You need to provide the --dataset information")
 
-train, dev, test, test_special, lang, SLOTS_LIST, gating_dict, max_word = prepare_data_seq(False, args['task'], False, batch_size=BSZ)
+custom_data, lang, SLOTS_LIST, gating_dict, max_word = prepare_custom_seq(task=args['task'], path='data/test_dials0.json')
 
 print(SLOTS_LIST)
 print(gating_dict)
 print(max_word)
-print(test)
+print(custom_data)
 
 model = globals()[decoder](
     int(HDD),
@@ -45,4 +45,4 @@ model = globals()[decoder](
 #     acc_test_4d = model.evaluate(test_special, 1e7, SLOTS_LIST[2])
 
 # print("Test Set ...")
-acc_test = model.predict(test, 1e7, SLOTS_LIST[3], verbose=True, max_samples=0)
+acc_test = model.predict(custom_data, 1e7, SLOTS_LIST[3], verbose=True, max_samples=10)
