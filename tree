@@ -1,0 +1,95 @@
+.
+├── all_prediction_TRADE.json
+├── create_data.py
+├── data
+│   ├── dev_dials.json
+│   ├── multi-woz
+│   │   ├── data.json
+│   │   ├── dialogue_acts0.json
+│   │   ├── __MACOSX
+│   │   │   └── MULTIWOZ2 2
+│   │   ├── MULTIWOZ2 2
+│   │   │   ├── attraction_db.json
+│   │   │   ├── data.json
+│   │   │   ├── dialogue_acts.json
+│   │   │   ├── hospital_db.json
+│   │   │   ├── hotel_db.json
+│   │   │   ├── ontology.json
+│   │   │   ├── police_db.json
+│   │   │   ├── README.json
+│   │   │   ├── restaurant_db.json
+│   │   │   ├── taxi_db.json
+│   │   │   ├── testListFile.json
+│   │   │   ├── train_db.json
+│   │   │   └── valListFile.json
+│   │   ├── testListFile.json
+│   │   └── valListFile.json
+│   ├── test_dials0.json
+│   ├── test_dials.json
+│   ├── train_dials.json
+│   └── trainListFile
+├── EWC_train.py
+├── fine_tune.py
+├── GEM_train.py
+├── models
+│   ├── __pycache__
+│   └── TRADE.py
+├── myTest.py
+├── myTrain.py
+├── plot
+│   ├── dataset.png
+│   ├── domain.pdf
+│   ├── domain-slot.pdf
+│   ├── einstein-scroll.png
+│   ├── example.png
+│   ├── HKUST.jpg
+│   ├── model.png
+│   ├── pytorch-logo-dark.png
+│   ├── salesforce-research.jpg
+│   └── slot.pdf
+├── predictions.txt
+├── README.md
+├── requirements.txt
+├── save
+│   └── TRADE-multiwozdst
+│       ├── HDD400BSZ32DR0.2ACC-0.3941
+│       │   ├── dec.th
+│       │   └── enc.th
+│       ├── HDD400BSZ32DR0.2ACC-0.4603
+│       │   ├── dec.th
+│       │   └── enc.th
+│       ├── HDD400BSZ32DR0.2ACC-0.4722
+│       │   ├── dec.th
+│       │   └── enc.th
+│       ├── HDD400BSZ32DR0.2ACC-0.4740
+│       │   ├── dec.th
+│       │   └── enc.th
+│       ├── HDD400BSZ32DR0.2ACC-0.4741
+│       │   ├── dec.th
+│       │   └── enc.th
+│       ├── HDD400BSZ32DR0.2ACC-0.4767
+│       │   ├── dec.th
+│       │   └── enc.th
+│       ├── HDD400BSZ32DR0.2ACC-0.4828
+│       │   ├── dec.th
+│       │   └── enc.th
+│       ├── HDD400BSZ32DR0.2ACC-0.4875
+│       │   ├── dec.th
+│       │   └── enc.th
+│       ├── lang-all.pkl
+│       └── mem-lang-all.pkl
+├── test.sh
+├── tree
+└── utils
+    ├── config.py
+    ├── fix_label.py
+    ├── logger.py
+    ├── mapping.pair
+    ├── masked_cross_entropy.py
+    ├── measures.py
+    ├── multi-bleu.perl
+    ├── __pycache__
+    ├── utils_multiWOZ_DST.py
+    └── utils_temp.py
+
+20 directories, 72 files
